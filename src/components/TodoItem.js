@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 
 export class TodoItem extends Component {
     getStyle = () => {
@@ -12,16 +13,18 @@ export class TodoItem extends Component {
     };
 
     render() {
-        const { id, title, completed } = this.props.todo;
+        const { id, title, completed, dueDate } = this.props.todo;
+
         return (
-            <div style={ this.getStyle() }>
+            <div style={ this.getStyle() } id={this.props.todo.id}>
+                <button onClick={this.props.delTodo.bind(this, id)} style={{ float: 'right' }} id={"delete"}>
+                    <i className="fa fa-trash" aria-hidden="true"></i>
+                </button>
                 <p>
-                    <input type="checkbox" onChange={ this.props.markComplete.bind(this, id ) } checked={ completed ? 'checked': '' }/>{' '}
+                    <input type="checkbox" onChange={ this.props.markComplete.bind(this, id, completed ) } checked={ completed ? 'checked': '' }/>{' '}
                     {title}
-                    <button onClick={this.props.delTodo.bind(this, id)} style={{ float: 'right' }}>
-                        <i class="fa fa-trash" aria-hidden="true" id="delete"></i>
-                    </button>
                 </p>
+                <p><b>Due Date:</b> {moment(dueDate).format('YYYY-MM-DD')}</p>
             </div>
         )
     }
