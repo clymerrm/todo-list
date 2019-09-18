@@ -6,20 +6,20 @@
     "axios": "^0.19.0",
     "json-server": "^0.15.0",
     "moment": "^2.24.0",
-    "react": "^16.7.0",
-    "react-dates": "^15.5.3",
-    "react-dom": "^16.7.0",
+    "react": "^16.9.0",
+    "react-datepicker": "^2.8.0",
+    "react-dom": "^16.9.0",
     "react-router-dom": "^4.3.1",
     "react-scripts": "^2.1.3",
     "react-select": "^3.0.4"
   },
   "scripts": {
-    "start-fresh": "cp public/todos.json todos.json",
+    "start-fresh": "cp public/todos.json data/todos.json",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "dev-server": "json-server -p 8080 --watch todos.json"
+    "dev-server": "json-server -p 3001 --watch data/todos.json"
   },
   "eslintConfig": {
     "extends": "react-app"

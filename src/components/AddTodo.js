@@ -2,28 +2,33 @@ import React, { Component } from 'react';
 
 import PropTypes from 'prop-types';
 
-import 'react-dates/initialize';
-import 'react-dates/lib/css/_datepicker.css';
-import {SingleDatePicker} from 'react-dates';
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
 
 
 export class AddTodo extends Component {
     state = {
         title: '',
-        dueDate: null,
+        dueDate: new Date()
     }
 
     onSubmit = (e) => {
         e.preventDefault();
         this.props.addTodo(this.state.title, this.state.dueDate);
-        this.setState({ title: '', dueDate: null});
+        this.setState({ title: '', dueDate: new Date()});
     }
 
-    onChange = (e) => this.setState({ title: e.target.value, dueDate: e.target.date });
+    onChange = (e) => this.setState({ title: e.target.value});
+
+    handleChange = date => this.setState({ dueDate: date})
 
     render() {
         return (
-            <form onSubmit={this.onSubmit} style={{display: 'flex'}}>
+            <form onSubmit={this.onSubmit} style={{display: 'grid', border: '5px solid #F4F4F4', padding: '5px', background: '#F4F4F4'}}>
+                <label>
+                    Task Name:
+                </label>
                 <input
                     type="text"
                     name="title"
@@ -33,14 +38,12 @@ export class AddTodo extends Component {
                     onChange={this.onChange}
                     required={true}
                 />
-                <SingleDatePicker
-                    placeholder="Due Date"
-                    date={this.state.dueDate} // momentPropTypes.momentObj or null
-                    onDateChange={dueDate => this.setState({ dueDate })} // PropTypes.func.isRequired
-                    focused={this.state.focused} // PropTypes.bool
-                    onFocusChange={({ focused }) => this.setState({ focused })} // PropTypes.func.isRequired
-                    hideKeyboardShortcutsPanel={true}
-                    numberOfMonths={1}
+                <label>
+                    Due Date:
+                </label>
+                <DatePicker
+                    selected={this.state.dueDate}
+                    onChange={this.handleChange}
                     required={true}
                 />
                 <input

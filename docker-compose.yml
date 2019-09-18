@@ -1,0 +1,18 @@
+version: '3'
+services:
+  json-server:
+    image: vimagick/json-server
+    command: -H 0.0.0.0 -p 8080 -w todos.json
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./data:/data
+    restart: always
+
+  todo-app:
+    build: .
+    ports:
+      - "3000:3000"
+    restart: always
+    links:
+      - json-server

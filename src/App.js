@@ -9,46 +9,70 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Todos from './components/Todos';
 import Header from './components/layout/Header';
 import AddTodo from './components/AddTodo';
-import About from './components/pages/About';
-import TodoFilter from './components/TodoFilter'
 
 import './App.css';
+import Select from "react-select";
+
+const filterOptions = [
+    { value: 'all', label: 'All Todos'},
+    { value: 'completed', label: 'Completed Todos'},
+    { value: 'open', label: 'Open Todos'}
+];
 
 class App extends Component {
   state = {
-    todos: []
+    todos: [],
+    selectedOption: ''
   };
 
   componentDidMount() {
-    this.returnAllTodos()
+    this.returnTodos()
   };
 
-  returnAllTodos() {
-      axios.get('http://localhost:8080/todos?_sort=completed,id&order=asc,asc')
-          .then(res => this.setState({ todos: res.data}));
+  componentDidUpdate(prevProps: Readonly<P>, prevState: Readonly<S>, snapshot: SS): void {
+      this.returnTodos()
+  }
+
+    returnTodos() {
+      let filter;
+      if (this.state.selectedOption.value === 'open') {
+          filter = '&completed=false'
+      } else if (this.state.selectedOption.value === 'completed') {
+          filter = '&completed=true'
+      } else{
+          filter = ''
+      }
+      axios.get('http://0.0.0.0:8080/todos?_sort=completed,id&_order=asc,desc' + filter )
+          .then(res => this.setState({todos: res.data}));
   }
 
   markComplete = (id, completed) => {
     let futureCompleted;
     if (completed === false) {futureCompleted = true} else {futureCompleted = false}
-    axios.patch(`http://localhost:8080/todos/${id}`, {completed: futureCompleted})
+    axios.patch(`http://0.0.0.0:8080/todos/${id}`, {completed: futureCompleted})
         .then(this.returnAllTodos())
   };
 
   delTodo = (id) => {
-    axios.delete(`http://localhost:8080/todos/${id}`)
+    axios.delete(`http://0.0.0.0:8080/todos/${id}`)
       .then(res => this.setState({ todos: [...this.state.todos.filter(todo => todo.id !== id)]}));
   };
 
   addTodo = (title, date) => {
-    axios.post('http://localhost:8080/todos/', {
+    axios.post('http://0.0.0.0:8080/todos/', {
       title: title,
       completed: false,
       dueDate: date,
     })
-        .then(res => this.setState({
-          todos: [...this.state.todos, res.data]
-        }));
+        .then(res => {
+                this.setState({todos: [...this.state.todos, res.data]});
+                this.returnTodos()
+            }
+        );
+  };
+
+  filterTodos = selectedOption => {
+    this.setState({ selectedOption });
   };
 
   render() {
@@ -61,12 +85,14 @@ class App extends Component {
             <Route exact path="/" render={props => (
               <React.Fragment>
                 <AddTodo addTodo={this.addTodo} />
-                <TodoFilter />
+                  <Select
+                      defaultValue={{value: 'all', label: 'All Todos'}}
+                      onChange={this.filterTodos}
+                      options={filterOptions}
+                  />
                 <Todos todos={this.state.todos} markComplete = {this.markComplete} delTodo={this.delTodo}/>
               </React.Fragment>
             )} />
-
-            <Route path="/about" component={About} />
           </div>
         </div>
       </Router>
