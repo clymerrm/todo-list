@@ -50,7 +50,7 @@ class App extends Component {
     let futureCompleted;
     if (completed === false) {futureCompleted = true} else {futureCompleted = false}
     axios.patch(`http://0.0.0.0:8080/todos/${id}`, {completed: futureCompleted})
-        .then(this.returnAllTodos())
+        .then(this.returnTodos())
   };
 
   delTodo = (id) => {
