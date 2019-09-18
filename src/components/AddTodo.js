@@ -37,6 +37,7 @@ export class AddTodo extends Component {
                     value={this.state.title}
                     onChange={this.onChange}
                     required={true}
+                    data-test-key="task-name-input"
                 />
                 <label>
                     Due Date:
@@ -45,12 +46,15 @@ export class AddTodo extends Component {
                     selected={this.state.dueDate}
                     onChange={this.handleChange}
                     required={true}
+                    data-test-key="task-due-date"
+                    id={'task-due-date'}
                 />
                 <input
                     type="submit"
                     value="Create Task"
                     className="btn"
                     style= {{flex: '1'}}
+                    data-test-key="create-task-button"
                 />
             </form>
         )
