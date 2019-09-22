@@ -30,7 +30,7 @@ class App extends Component {
   };
 
   componentDidUpdate(prevProps: Readonly<P>, prevState: Readonly<S>, snapshot: SS): void {
-      if(prevState.selectedOption != this.state.selectedOption) {
+      if(prevState.selectedOption !== this.state.selectedOption) {
           this.returnTodos()
       }
   }
