@@ -30,10 +30,12 @@ class App extends Component {
   };
 
   componentDidUpdate(prevProps: Readonly<P>, prevState: Readonly<S>, snapshot: SS): void {
-      this.returnTodos()
+      if(prevState.selectedOption != this.state.selectedOption) {
+          this.returnTodos()
+      }
   }
 
-    returnTodos() {
+  returnTodos() {
       let filter;
       if (this.state.selectedOption.value === 'open') {
           filter = '&completed=false'
@@ -66,7 +68,7 @@ class App extends Component {
     })
         .then(res => {
                 this.setState({todos: [...this.state.todos, res.data]});
-                this.returnTodos()
+                this.returnTodos();
             }
         );
   };
