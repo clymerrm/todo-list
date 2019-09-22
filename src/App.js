@@ -26,14 +26,16 @@ class App extends Component {
   };
 
   componentDidMount() {
-    this.returnTodos()
+      this.returnTodos()
   };
 
   componentDidUpdate(prevProps: Readonly<P>, prevState: Readonly<S>, snapshot: SS): void {
-      this.returnTodos()
+      if(prevState.selectedOption != this.state.selectedOption) {
+          this.returnTodos()
+      }
   }
 
-    returnTodos() {
+  returnTodos() {
       let filter;
       if (this.state.selectedOption.value === 'open') {
           filter = '&completed=false'
