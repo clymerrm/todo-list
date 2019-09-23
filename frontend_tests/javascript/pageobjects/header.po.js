@@ -10,14 +10,14 @@ Page.prototype.returnHeaderText = function() {
     return header.text
 };
 
-Page.prototype.clickScheduleLink = function () {
+Page.prototype.clickScheduleLink = async function () {
     link = this.findByCss(scheduleLinkCss);
-    this.clickElement(link);
+    await this.clickElement(link);
 };
 
-Page.prototype.clickSpeakersLink = function () {
+Page.prototype.clickSpeakersLink = async function () {
     link = this.findByCss(speakersLinkCss);
-    this.clickElement(link);
+    await this.clickElement(link);
 };
 
 Page.prototype.clickHomeLink = function () {

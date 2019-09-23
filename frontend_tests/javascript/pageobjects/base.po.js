@@ -1,5 +1,7 @@
 const {webdriver, Builder, until, By} = require('selenium-webdriver');
 
+
+
 const BasePage = function() {
 
     this.driver = new Builder()
@@ -20,6 +22,10 @@ const BasePage = function() {
     this.titleContains = function(titleContents) {
         return this.driver.wait(until.titleContains(titleContents))
     };
+
+    this.returnTitle = async function() {
+        return await this.driver.getTitle();
+    }
 
     this.findByXpath = function(xpath) {
         this.driver.wait(until.elementLocated(By.xpath(xpath)), 10000);

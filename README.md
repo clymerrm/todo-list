@@ -50,4 +50,5 @@ $ npm start-fresh
 
 ### Locators
 CSS Examples - https://saucelabs.com/resources/articles/selenium-tips-css-selectors
+
 XPATH Examples - https://www.lambdatest.com/blog/complete-guide-for-using-xpath-in-selenium-with-examples/
