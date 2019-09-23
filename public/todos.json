@@ -38,27 +38,33 @@
     },
     {
       "id": 7,
-      "title": "Make Our App More Testable",
+      "title": "Make Our App More Automatable",
       "dueDate": "2019-09-23T16:00:00.000Z",
       "completed": false
     },
     {
       "id": 8,
-      "title": "quo adipisci enim quam ut ab",
+      "title": "Learn about selenium",
       "dueDate": "2019-09-23T16:00:00.000Z",
-      "completed": false
+      "completed": true
     },
     {
       "id": 9,
-      "title": "molestiae perspiciatis ipsa",
+      "title": "Learn about cypress.io",
       "dueDate": "2019-09-23T16:00:00.000Z",
-      "completed": false
+      "completed": true
     },
     {
       "id": 10,
-      "title": "illo est ratione doloremque quia maiores aut",
+      "title": "Learn about testcafe",
       "dueDate": "2019-09-23T16:00:00.000Z",
-      "completed": false
+      "completed": true
+    },
+    {
+      "id": 11,
+      "title": "Figure out my go forward plans with automation",
+      "dueDate": "2019-09-25T16:00:00.000Z",
+      "completed": true
     }
   ]
 }
