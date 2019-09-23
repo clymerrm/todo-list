@@ -1,7 +1,7 @@
 class Base():
 
     def __init__(self, driver):
-        self.base_page = 'http://localhost:3002'
+        self.base_page = 'http://localhost:3000'
         self.driver = driver
 
     def get_base_page(self):
