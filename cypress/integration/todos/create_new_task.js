@@ -2,7 +2,7 @@ import faker from 'faker'
 
 describe('Add New Tasks', function() {
     it('Adds a new task', function () {
-        cy.visit('http://localhost:3002');
+        cy.visit('http://localhost:3000');
         const taskName = faker.company.catchPhrase();
         cy.get('[data-test-key=task-name-input]').type(taskName);
         const d = new Date();
