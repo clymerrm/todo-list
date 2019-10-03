@@ -1,0 +1,70 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "title": "Get To Cambridge Hotel and Conference Center",
+      "dueDate": "2019-09-22T16:00:00.000Z",
+      "completed": true
+    },
+    {
+      "id": 2,
+      "title": "Visit Registration and Get Name Badge",
+      "dueDate": "2019-09-23T16:00:00.000Z",
+      "completed": true
+    },
+    {
+      "id": 3,
+      "title": "Find Dorset Room and Get Comfortable",
+      "dueDate": "2019-09-23T16:00:00.000Z",
+      "completed": true
+    },
+    {
+      "id": 4,
+      "title": "Learn What We'll Go Over In This Workshop",
+      "dueDate": "2019-09-23T16:00:00.000Z",
+      "completed": false
+    },
+    {
+      "id": 5,
+      "title": "Discuss Web Locators and Why They Dont Always Work",
+      "dueDate": "2019-09-23T16:00:00.000Z",
+      "completed": false
+    },
+    {
+      "id": 6,
+      "title": "Find Some Locators And Figure Out Better Ways To Do Them",
+      "dueDate": "2019-09-23T16:00:00.000Z",
+      "completed": false
+    },
+    {
+      "id": 7,
+      "title": "Make Our App More Automatable",
+      "dueDate": "2019-09-23T16:00:00.000Z",
+      "completed": false
+    },
+    {
+      "id": 8,
+      "title": "Learn about selenium",
+      "dueDate": "2019-09-23T16:00:00.000Z",
+      "completed": true
+    },
+    {
+      "id": 9,
+      "title": "Learn about cypress.io",
+      "dueDate": "2019-09-23T16:00:00.000Z",
+      "completed": true
+    },
+    {
+      "id": 10,
+      "title": "Learn about testcafe",
+      "dueDate": "2019-09-23T16:00:00.000Z",
+      "completed": true
+    },
+    {
+      "id": 11,
+      "title": "Figure out my go forward plans with automation",
+      "dueDate": "2019-09-25T16:00:00.000Z",
+      "completed": true
+    }
+  ]
+}
